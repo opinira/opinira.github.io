@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Sparkles, Filter, ExternalLink, ArrowUpRight } from 'lucide-react';
+import { Sparkles, Filter, ExternalLink, ArrowUpRight, Github } from 'lucide-react';
 import ProjectCard from '../components/ProjectCard';
-import { projectsData, portfolioCategories, DRIVE_VIDEO_URL, DRIVE_STATIC_URL, BEHANCE_PROFILE_URL } from '../data/portfolioData';
+import { projectsData, portfolioCategories, DRIVE_VIDEO_URL, DRIVE_STATIC_URL, BEHANCE_PROFILE_URL, GITHUB_PROFILE_URL } from '../data/portfolioData';
 
 export default function ProjectsPage({ initialCategory = 'all', onOpenCaseStudy }) {
   const [selectedCategory, setSelectedCategory] = useState(initialCategory);
@@ -43,6 +43,16 @@ export default function ProjectsPage({ initialCategory = 'all', onOpenCaseStudy 
 
         {/* External Repositories */}
         <div className="flex flex-wrap items-center gap-2.5">
+          <a
+            href={GITHUB_PROFILE_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-white hover:bg-[#FAF7F2] border border-[#142B4A]/10 text-[#142B4A] font-sans font-semibold text-xs shadow-sm group"
+          >
+            <Github className="w-3.5 h-3.5 text-[#142B4A] group-hover:text-bronze" />
+            <span>GitHub (@opinira)</span>
+            <ExternalLink className="w-3 h-3 text-bronze" />
+          </a>
           <a
             href={DRIVE_VIDEO_URL}
             target="_blank"

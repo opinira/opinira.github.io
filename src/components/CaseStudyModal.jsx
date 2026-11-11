@@ -100,7 +100,7 @@ export default function CaseStudyModal({ project, onClose }) {
                 className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white hover:bg-[#FAF7F2] border border-[#142B4A]/15 text-[#142B4A] font-display font-bold text-xs transition-colors"
               >
                 <Github className="w-3.5 h-3.5 text-bronze" />
-                <span>GitHub Repository</span>
+                <span>GitHub (@opinira)</span>
               </a>
             )}
 

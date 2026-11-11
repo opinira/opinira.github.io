@@ -1,8 +1,8 @@
 import React from 'react';
-import { Briefcase, Sparkles, ArrowUpRight, FolderDown } from 'lucide-react';
+import { Briefcase, Sparkles, ArrowUpRight, FolderDown, Github } from 'lucide-react';
 import ExperienceTimeline from '../components/ExperienceTimeline';
 import SkillGroup from '../components/SkillGroup';
-import { DRIVE_PROJECTS_URL, BEHANCE_PROFILE_URL } from '../data/portfolioData';
+import { DRIVE_PROJECTS_URL, BEHANCE_PROFILE_URL, GITHUB_PROFILE_URL } from '../data/portfolioData';
 
 export default function ExperiencePage({ setActivePage }) {
   return (
@@ -65,6 +65,16 @@ export default function ExperiencePage({ setActivePage }) {
         </div>
 
         <div className="flex flex-wrap items-center gap-3">
+          <a
+            href={GITHUB_PROFILE_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-4 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 text-white font-sans font-semibold text-xs transition-luxury flex items-center gap-2 backdrop-blur-sm"
+          >
+            <Github className="w-4 h-4 text-white" />
+            <span>GitHub (@opinira)</span>
+            <ArrowUpRight className="w-3.5 h-3.5 text-bronze-light" />
+          </a>
           <a
             href={DRIVE_PROJECTS_URL}
             target="_blank"

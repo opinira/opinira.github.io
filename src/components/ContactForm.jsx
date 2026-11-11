@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Mail, MessageSquare, Copy, Check, ArrowUpRight, Send, MapPin } from 'lucide-react';
-import { BEHANCE_PROFILE_URL } from '../data/portfolioData';
+import { Mail, MessageSquare, Copy, Check, ArrowUpRight, Send, MapPin, Github } from 'lucide-react';
+import { BEHANCE_PROFILE_URL, GITHUB_PROFILE_URL } from '../data/portfolioData';
 import { professionalProfile } from '../data/educationData';
 
 export default function ContactForm() {
@@ -136,6 +136,31 @@ export default function ContactForm() {
               </p>
             )}
           </div>
+
+          {/* GitHub Link */}
+          <a
+            href={GITHUB_PROFILE_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-4 sm:p-5 rounded-2xl bg-white border border-[#142B4A]/10 hover:border-[#142B4A] transition-luxury block group shadow-md"
+          >
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-xl bg-[#142B4A] flex items-center justify-center text-white">
+                  <Github className="w-5 h-5 text-white" />
+                </div>
+                <div>
+                  <span className="text-[11px] font-mono text-[#627D98] uppercase tracking-wider font-semibold block">
+                    GitHub Profile
+                  </span>
+                  <span className="text-sm font-bold text-[#142B4A] font-display block group-hover:text-bronze transition-luxury">
+                    github.com/opinira
+                  </span>
+                </div>
+              </div>
+              <ArrowUpRight className="w-4 h-4 text-[#627D98] group-hover:text-[#142B4A] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-luxury" />
+            </div>
+          </a>
 
           {/* Behance Link */}
           <a

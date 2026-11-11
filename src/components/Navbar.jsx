@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, ArrowUpRight, FolderDown, Film, Image as ImageIcon } from 'lucide-react';
+import { Menu, X, ArrowUpRight, FolderDown, Film, Image as ImageIcon, Github } from 'lucide-react';
 import portraitImg from '../assets/images/portrait.png';
-import { BEHANCE_PROFILE_URL, DRIVE_VIDEO_URL, DRIVE_STATIC_URL } from '../data/portfolioData';
+import { BEHANCE_PROFILE_URL, DRIVE_VIDEO_URL, DRIVE_STATIC_URL, GITHUB_PROFILE_URL, GITHUB_USERNAME } from '../data/portfolioData';
 
 export default function Navbar({ activePage, setActivePage }) {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -134,6 +134,17 @@ export default function Navbar({ activePage, setActivePage }) {
             </div>
 
             <a
+              href={GITHUB_PROFILE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-sans font-bold text-[#142B4A] hover:text-bronze bg-white/90 hover:bg-white border border-[#142B4A]/10 hover:border-bronze transition-all shadow-sm"
+              title="GitHub Profile (opinira)"
+            >
+              <Github className="w-3.5 h-3.5 text-[#142B4A]" />
+              <span className="font-mono font-bold">opinira</span>
+            </a>
+
+            <a
               href={BEHANCE_PROFILE_URL}
               target="_blank"
               rel="noopener noreferrer"
@@ -184,8 +195,21 @@ export default function Navbar({ activePage, setActivePage }) {
             })}
           </div>
 
-          {/* Mobile Drive & Behance Links */}
+          {/* Mobile Drive, GitHub & Behance Links */}
           <div className="pt-4 border-t border-[#142B4A]/10 space-y-2">
+            <a
+              href={GITHUB_PROFILE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full flex items-center justify-between p-3 rounded-xl bg-white border border-[#142B4A]/10 text-[#142B4A] font-sans font-bold text-xs shadow-sm min-h-[44px]"
+            >
+              <div className="flex items-center gap-2">
+                <Github className="w-4 h-4 text-[#142B4A]" />
+                <span>GitHub (opinira)</span>
+              </div>
+              <ArrowUpRight className="w-3.5 h-3.5 text-bronze" />
+            </a>
+
             <a
               href={DRIVE_VIDEO_URL}
               target="_blank"

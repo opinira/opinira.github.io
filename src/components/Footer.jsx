@@ -1,7 +1,7 @@
 import React from 'react';
-import { ArrowUpRight, MessageSquare, FolderDown, Film, Image as ImageIcon } from 'lucide-react';
+import { ArrowUpRight, MessageSquare, FolderDown, Film, Image as ImageIcon, Github } from 'lucide-react';
 import portraitImg from '../assets/images/portrait.png';
-import { BEHANCE_PROFILE_URL, DRIVE_VIDEO_URL, DRIVE_STATIC_URL } from '../data/portfolioData';
+import { BEHANCE_PROFILE_URL, DRIVE_VIDEO_URL, DRIVE_STATIC_URL, GITHUB_PROFILE_URL, GITHUB_USERNAME } from '../data/portfolioData';
 
 export default function Footer({ setActivePage }) {
   const currentYear = new Date().getFullYear();
@@ -152,6 +152,20 @@ export default function Footer({ setActivePage }) {
                 <ArrowUpRight className="w-4 h-4 text-ivory/60 group-hover:text-bronze-light group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-luxury" />
               </a>
 
+              {/* GitHub Profile */}
+              <a
+                href={GITHUB_PROFILE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-between p-3 rounded-xl bg-[#0E1E34] border border-white/10 hover:border-bronze text-white hover:text-bronze-light transition-luxury group min-h-[44px]"
+              >
+                <div className="flex items-center gap-2.5">
+                  <Github className="w-4 h-4 text-bronze-light" />
+                  <span className="text-xs sm:text-sm font-semibold">GitHub (@opinira)</span>
+                </div>
+                <ArrowUpRight className="w-4 h-4 text-ivory/60 group-hover:text-bronze-light group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-luxury" />
+              </a>
+
               {/* Behance */}
               <a
                 href={BEHANCE_PROFILE_URL}
@@ -175,6 +189,16 @@ export default function Footer({ setActivePage }) {
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-ivory/60 font-sans text-center sm:text-left">
           <p>© {currentYear} Mst. Opisultana Nira. All rights reserved.</p>
           <div className="flex flex-wrap items-center justify-center gap-2 text-[11px] text-ivory/60">
+            <a
+              href={GITHUB_PROFILE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-bronze-light hover:underline font-mono font-bold flex items-center gap-1"
+            >
+              <Github className="w-3 h-3" />
+              <span>github.com/opinira</span>
+            </a>
+            <span>•</span>
             <span>Direct WhatsApp: 01312727685</span>
             <span>•</span>
             <span className="text-bronze-light">Front-End Developer & UI/UX Designer</span>

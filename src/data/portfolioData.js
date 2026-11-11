@@ -15,6 +15,8 @@ export const DRIVE_VIDEO_URL = 'https://drive.google.com/drive/folders/1TGqEy1Mu
 export const DRIVE_STATIC_URL = 'https://drive.google.com/drive/folders/11nSmd7EdYUi81w2m4UZJoMdLF0ho7huC?usp=sharing';
 export const DRIVE_PROJECTS_URL = DRIVE_VIDEO_URL;
 export const BEHANCE_PROFILE_URL = 'https://www.behance.net/opinira';
+export const GITHUB_PROFILE_URL = 'https://github.com/opinira';
+export const GITHUB_USERNAME = 'opinira';
 
 export const portfolioCategories = [
   {

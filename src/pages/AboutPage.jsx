@@ -55,7 +55,7 @@ export default function AboutPage({ setActivePage }) {
           </div>
 
           {/* Key Traits Bar */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
             <div className="p-3.5 rounded-xl bg-white border border-[#142B4A]/10 shadow-sm">
               <span className="text-[10px] font-mono uppercase text-bronze font-bold block">Focus</span>
               <span className="text-xs font-bold text-[#142B4A] font-display block mt-0.5">Front-End & UI/UX</span>
@@ -68,6 +68,15 @@ export default function AboutPage({ setActivePage }) {
               <span className="text-[10px] font-mono uppercase text-bronze font-bold block">Education</span>
               <span className="text-xs font-bold text-[#142B4A] font-display block mt-0.5">B.Sc. in CSE</span>
             </div>
+            <a
+              href="https://github.com/opinira"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-3.5 rounded-xl bg-white border border-[#142B4A]/10 hover:border-bronze shadow-sm transition-colors group block text-left"
+            >
+              <span className="text-[10px] font-mono uppercase text-bronze font-bold block">GitHub</span>
+              <span className="text-xs font-bold text-[#142B4A] group-hover:text-bronze font-mono block mt-0.5">@opinira</span>
+            </a>
           </div>
         </div>
       </section>

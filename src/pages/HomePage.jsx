@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { ArrowRight, ArrowUpRight, Sparkles, MessageSquare, Mail, Layers } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, Sparkles, MessageSquare, Mail, Layers, Github } from 'lucide-react';
 import portraitImg from '../assets/images/portrait.png';
 import TypingTagline from '../components/TypingTagline';
 import CategoryBanner from '../components/CategoryBanner';
 import ProjectCard from '../components/ProjectCard';
-import { projectsData, portfolioCategories } from '../data/portfolioData';
+import { projectsData, portfolioCategories, GITHUB_PROFILE_URL } from '../data/portfolioData';
 import { professionalProfile } from '../data/educationData';
 
 export default function HomePage({ setActivePage, onOpenCaseStudy, onSelectCategory }) {
@@ -104,6 +104,15 @@ export default function HomePage({ setActivePage, onOpenCaseStudy, onSelectCateg
 
               {/* Institutional & Current Brand Affiliation */}
               <div className="pt-4 flex flex-wrap items-center gap-4 sm:gap-6 text-xs text-[#486581] font-mono font-semibold border-t border-[#142B4A]/10">
+                <a
+                  href={GITHUB_PROFILE_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-1.5 text-[#142B4A] hover:text-bronze transition-colors group"
+                >
+                  <Github className="w-3.5 h-3.5 text-[#142B4A] group-hover:text-bronze" />
+                  <span>GitHub: <strong className="font-bold underline decoration-bronze/40 underline-offset-2">opinira</strong></span>
+                </a>
                 <div className="flex items-center gap-2">
                   <span className="w-2 h-2 rounded-full bg-bronze flex-shrink-0" />
                   <span>Royal Hair Wigs & Roylux (Worldwide Export Brands)</span>

@@ -33,6 +33,7 @@ export const professionalProfile = {
   whatsappUrl: 'https://wa.me/8801312727685',
   behanceUrl: 'https://www.behance.net/opinira',
   githubUrl: 'https://github.com/opinira',
+  githubUsername: 'opinira',
   driveProjectsUrl: 'https://drive.google.com/drive/folders/1TGqEy1MuzgMSlE_NvG_UMAF7qB0RucNN?usp=sharing',
   currentRole: 'Front-End Developer & UI/UX Designer at Royal Hair Wigs & Roylux',
   currentLocation: 'Rajshahi, Bangladesh (Available for Worldwide Remote Work)',

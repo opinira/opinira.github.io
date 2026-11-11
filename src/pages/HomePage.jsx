@@ -1,12 +1,15 @@
-import React from 'react';
-import { ArrowRight, ArrowUpRight, Sparkles, Film, Image as ImageIcon, CheckCircle2, MessageSquare, Compass, Layout } from 'lucide-react';
+import React, { useState } from 'react';
+import { ArrowRight, ArrowUpRight, Sparkles, MessageSquare, Mail, Layers } from 'lucide-react';
 import portraitImg from '../assets/images/portrait.png';
+import TypingTagline from '../components/TypingTagline';
 import CategoryBanner from '../components/CategoryBanner';
 import ProjectCard from '../components/ProjectCard';
-import { projectsData } from '../data/portfolioData';
-import { professionalProfile, servicesData } from '../data/educationData';
+import { projectsData, portfolioCategories } from '../data/portfolioData';
+import { professionalProfile } from '../data/educationData';
 
 export default function HomePage({ setActivePage, onOpenCaseStudy, onSelectCategory }) {
+  const [selectedFilter, setSelectedFilter] = useState('all');
+
   const handleNavClick = (pageId) => {
     setActivePage(pageId);
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -20,115 +23,118 @@ export default function HomePage({ setActivePage, onOpenCaseStudy, onSelectCateg
     window.open(`https://wa.me/8801312727685?text=${text}`, '_blank');
   };
 
-  const getServiceIcon = (iconName) => {
-    switch (iconName) {
-      case 'Film':
-        return <Film className="w-5 h-5 sm:w-6 sm:h-6 text-bronze" />;
-      case 'Image':
-        return <ImageIcon className="w-5 h-5 sm:w-6 sm:h-6 text-bronze" />;
-      case 'Layout':
-        return <Layout className="w-5 h-5 sm:w-6 sm:h-6 text-bronze" />;
-      case 'Sparkles':
-        return <Sparkles className="w-5 h-5 sm:w-6 sm:h-6 text-bronze" />;
-      default:
-        return <Sparkles className="w-5 h-5 sm:w-6 sm:h-6 text-bronze" />;
+  const handleCategoryCardClick = (catId) => {
+    setSelectedFilter(catId);
+    const projectsElem = document.getElementById('projects-section');
+    if (projectsElem) {
+      projectsElem.scrollIntoView({ behavior: 'smooth' });
     }
   };
+
+  const filterTabs = [
+    { id: 'all', label: 'All Work' },
+    ...portfolioCategories.map((c) => ({ id: c.id, label: c.label })),
+  ];
+
+  const filteredProjects = projectsData.filter((p) => {
+    if (selectedFilter === 'all') return true;
+    return p.category === selectedFilter;
+  });
 
   return (
     <div className="space-y-16 sm:space-y-24 lg:space-y-32">
       {/* 1. Hero Section */}
-      <section className="relative pt-10 sm:pt-16 lg:pt-20 pb-4 sm:pb-6 overflow-hidden">
-        {/* Ambient warm glows */}
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] sm:w-[550px] h-[350px] sm:h-[550px] bg-bronze/10 rounded-full blur-[100px] sm:blur-[120px] pointer-events-none" />
+      <section className="relative pt-10 sm:pt-16 lg:pt-20 pb-4 sm:pb-8 overflow-hidden">
+        {/* Ambient background glows */}
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] sm:w-[600px] h-[350px] sm:h-[600px] bg-bronze/10 rounded-full blur-[100px] sm:blur-[130px] pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
-            {/* Left Content (7 cols) */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+            {/* Left Column: Hero Text & Typing Headline (7 cols) */}
             <div className="lg:col-span-7 space-y-5 sm:space-y-6 text-left">
-              {/* Badge */}
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-bronze/40 shadow-sm backdrop-blur-md max-w-full">
+              {/* Status Pill */}
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[#142B4A]/10 shadow-sm">
                 <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse flex-shrink-0" />
-                <span className="text-[11px] sm:text-xs font-mono font-bold text-[#142B4A] tracking-wide truncate">
-                  Motion Graphics & UI/UX Specialist • Available for Hire
+                <span className="text-[11px] sm:text-xs font-mono font-bold text-[#142B4A] tracking-wide">
+                  Available for Remote & International Contracts
                 </span>
               </div>
 
-              {/* Headline */}
-              <h1 className="font-display text-3xl sm:text-5xl lg:text-6xl font-bold text-[#142B4A] tracking-tight leading-[1.15]">
-                Designing Visual Stories That <span className="text-transparent bg-clip-text bg-gradient-to-r from-bronze via-bronze-dark to-[#142B4A]">Move Brands Forward.</span>
-              </h1>
+              {/* Name & Headline */}
+              <div className="space-y-2">
+                <h1 className="font-display text-3xl sm:text-5xl lg:text-6xl font-bold text-[#142B4A] tracking-tight leading-[1.12]">
+                  Mst. Opisultana Nira
+                </h1>
 
-              {/* Subtitle / Intro */}
+                {/* Animated Typing Tagline */}
+                <TypingTagline />
+              </div>
+
+              {/* Concise Introduction: Exactly one factual sentence */}
               <p className="text-sm sm:text-base lg:text-lg text-[#334E68] leading-relaxed max-w-2xl font-sans font-medium">
-                {professionalProfile.heroSubheadline}
+                A multidisciplinary creative combining Computer Science precision with commercial motion graphics, luxury visual design, and modern web & mobile engineering.
               </p>
 
-              {/* CTAs */}
-              <div className="flex flex-wrap items-center gap-3 sm:gap-4 pt-2 sm:pt-4">
-                <button
-                  onClick={() => handleNavClick('projects')}
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl bg-gradient-to-r from-bronze to-bronze-dark hover:from-bronze-light hover:to-bronze text-white font-display font-bold text-sm shadow-xl shadow-bronze/25 transition-luxury group min-h-[44px]"
+              {/* Two Clear Primary Actions + WhatsApp */}
+              <div className="flex flex-wrap items-center gap-3 sm:gap-4 pt-2">
+                <a
+                  href="#work-categories"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl bg-bronze hover:bg-bronze-dark text-white font-display font-bold text-sm shadow-xl shadow-bronze/25 transition-all duration-200 group min-h-[46px]"
                 >
-                  <span>View Case Studies</span>
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-luxury" />
+                  <span>Explore My Work</span>
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </a>
+
+                <button
+                  onClick={() => handleNavClick('contact')}
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-white hover:bg-[#FAF7F2] border border-[#142B4A]/15 hover:border-bronze text-[#142B4A] font-display font-bold text-sm transition-all duration-200 shadow-sm min-h-[46px]"
+                >
+                  <Mail className="w-4 h-4 text-bronze" />
+                  <span>Get in Touch</span>
                 </button>
 
                 <button
                   onClick={handleWhatsAppChat}
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-display font-bold text-sm shadow-lg shadow-emerald-700/20 transition-luxury min-h-[44px]"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-display font-bold text-sm shadow-md transition-all duration-200 min-h-[46px]"
                 >
                   <MessageSquare className="w-4 h-4" />
-                  <span>WhatsApp: 01312727685</span>
-                </button>
-
-                <button
-                  onClick={() => handleNavClick('contact')}
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl bg-white hover:bg-canvas-muted border border-[#142B4A]/15 hover:border-bronze text-[#142B4A] font-display font-bold text-sm transition-luxury shadow-sm min-h-[44px]"
-                >
-                  <span>Contact Form</span>
-                  <ArrowUpRight className="w-4 h-4 text-bronze" />
+                  <span>WhatsApp</span>
                 </button>
               </div>
 
-              {/* Brand Bar */}
-              <div className="pt-4 sm:pt-6 flex flex-wrap items-center gap-4 sm:gap-6 text-xs text-[#486581] font-mono font-semibold border-t border-[#142B4A]/10">
+              {/* Institutional & Current Brand Affiliation */}
+              <div className="pt-4 flex flex-wrap items-center gap-4 sm:gap-6 text-xs text-[#486581] font-mono font-semibold border-t border-[#142B4A]/10">
                 <div className="flex items-center gap-2">
                   <span className="w-2 h-2 rounded-full bg-bronze flex-shrink-0" />
-                  <span>Royal Hair Wigs & Roylux (Worldwide Export)</span>
+                  <span>Royal Hair Wigs & Roylux (Worldwide Export Brands)</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-bronze flex-shrink-0" />
-                  <span>Varendra University CSE</span>
+                  <span className="w-2 h-2 rounded-full bg-emerald-500 flex-shrink-0" />
+                  <span>Varendra University (B.Sc. in CSE)</span>
                 </div>
               </div>
             </div>
 
-            {/* Right Content: Professional Portrait (5 cols) */}
+            {/* Right Column: Main Portrait (5 cols) */}
             <div className="lg:col-span-5 flex justify-center lg:justify-end">
-              <div className="relative w-full max-w-xs sm:max-w-sm aspect-[4/5] rounded-3xl p-2.5 sm:p-3 bg-white border border-[#142B4A]/10 shadow-2xl shadow-[#142B4A]/10 group">
-                <div className="w-full h-full rounded-2xl overflow-hidden bg-slate-100 relative">
+              <div className="relative group max-w-sm sm:max-w-md w-full">
+                {/* Subtle Luxury Outer Glow */}
+                <div className="absolute -inset-1.5 bg-gradient-to-r from-bronze/40 via-bronze/10 to-navy/30 rounded-3xl blur-xl opacity-60 group-hover:opacity-90 transition-opacity duration-500" />
+
+                {/* Portrait Card */}
+                <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden bg-white border border-bronze/40 p-2 sm:p-2.5 shadow-2xl">
                   <img
                     src={portraitImg}
-                    alt="Mst. Opisultana Nira"
-                    className="w-full h-full object-cover object-top group-hover:scale-102 transition-luxury duration-700"
-                    loading="eager"
+                    alt="Mst. Opisultana Nira Portrait"
+                    width={800}
+                    height={1000}
+                    className="w-full h-auto object-cover rounded-xl sm:rounded-2xl block"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#142B4A]/50 via-transparent to-transparent opacity-40" />
-                </div>
 
-                {/* Floating Info Pill */}
-                <div className="absolute -bottom-3 sm:-bottom-4 left-4 right-4 sm:left-6 sm:right-6 p-3 rounded-2xl bg-[#142B4A] border border-bronze/40 shadow-xl backdrop-blur-md flex items-center justify-between text-white">
-                  <div className="text-left">
-                    <span className="text-xs font-bold text-white font-display block">
-                      Mst. Opisultana Nira
-                    </span>
-                    <span className="text-[10px] font-mono text-bronze-light block">
-                      Motion & UI/UX Designer
-                    </span>
-                  </div>
-                  <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-[#0E1E34] border border-bronze/40 flex items-center justify-center text-bronze-light flex-shrink-0">
-                    <Sparkles className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                  {/* Corner Brand Pill */}
+                  <div className="absolute bottom-4 left-4 right-4 bg-[#142B4A]/90 backdrop-blur-md px-3.5 py-2 rounded-xl text-white flex items-center justify-between text-xs">
+                    <span className="font-display font-bold">Nira</span>
+                    <span className="text-[11px] font-mono text-bronze-light">Creative Designer & Engineer</span>
                   </div>
                 </div>
               </div>
@@ -137,50 +143,60 @@ export default function HomePage({ setActivePage, onOpenCaseStudy, onSelectCateg
         </div>
       </section>
 
-      {/* 2. Primary 2-Category Spotlight Section */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="space-y-3 sm:space-y-4 mb-8 sm:mb-10 text-left">
-          <div className="flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-bronze" />
-            <span className="text-xs font-mono font-bold uppercase tracking-widest text-bronze">
-              Core Creative Disciplines
-            </span>
-          </div>
-          <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold text-[#142B4A] tracking-tight">
-            Commercial Motion & Static Visuals
-          </h2>
-          <p className="text-xs sm:text-sm lg:text-base text-[#486581] max-w-2xl font-medium">
-            Explore curated work crafted with precision for international luxury export brands, promotional marketing campaigns, and digital product experiences.
-          </p>
-        </div>
-
-        {/* 1:1 Equal-Sized Category Banner Containers */}
-        <CategoryBanner onSelectCategory={onSelectCategory} />
+      {/* 2. Four Work Categories Section ("Explore My Work") */}
+      <section id="work-categories" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <CategoryBanner onSelectCategory={handleCategoryCardClick} />
       </section>
 
-      {/* 3. Featured Commercial Case Studies (2 Main Projects) */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8 sm:mb-10 text-left">
-          <div className="space-y-2">
-            <span className="text-xs font-mono font-bold uppercase tracking-widest text-bronze">
-              Case Study Breakdowns
-            </span>
-            <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold text-[#142B4A] tracking-tight">
-              Selected Commercial Projects
+      {/* 3. Project Collection with Filter Toolbar */}
+      <section id="projects-section" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 sm:space-y-10">
+        {/* Section Title & Filter Tabs */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-4 border-b border-[#142B4A]/10 text-left">
+          <div>
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white border border-[#142B4A]/10 text-xs font-mono font-bold text-bronze uppercase tracking-wider mb-2">
+              <Layers className="w-3.5 h-3.5" />
+              <span>Project Showcase</span>
+            </div>
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-display font-bold text-[#142B4A] tracking-tight">
+              Featured Work
             </h2>
           </div>
-          <button
-            onClick={() => handleNavClick('projects')}
-            className="inline-flex items-center gap-2 text-sm font-sans font-bold text-bronze hover:text-bronze-dark transition-luxury min-h-[44px] self-start sm:self-auto"
-          >
-            <span>Explore Project Gallery</span>
-            <ArrowRight className="w-4 h-4" />
-          </button>
+
+          {/* Interactive Filter Pills */}
+          <div className="flex flex-wrap items-center gap-2 bg-white p-1.5 rounded-2xl border border-[#142B4A]/10 shadow-sm">
+            {filterTabs.map((tab) => {
+              const isActive = selectedFilter === tab.id;
+              const count = tab.id === 'all'
+                ? projectsData.length
+                : projectsData.filter((p) => p.category === tab.id).length;
+
+              return (
+                <button
+                  key={tab.id}
+                  onClick={() => setSelectedFilter(tab.id)}
+                  className={`inline-flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-sans font-bold transition-all duration-200 min-h-[38px] ${
+                    isActive
+                      ? 'bg-[#142B4A] text-white shadow-md'
+                      : 'text-[#142B4A] hover:text-bronze hover:bg-[#FAF7F2]'
+                  }`}
+                >
+                  <span>{tab.label}</span>
+                  <span
+                    className={`text-[10px] px-1.5 py-0.5 rounded-full ${
+                      isActive ? 'bg-white/20 text-white' : 'bg-[#FAF7F2] text-[#486581]'
+                    }`}
+                  >
+                    {count}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
         </div>
 
-        {/* 1:1 Square Grid for the 2 Main Categories */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-5xl mx-auto">
-          {projectsData.map((project) => (
+        {/* Project Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          {filteredProjects.map((project) => (
             <ProjectCard
               key={project.id}
               project={project}
@@ -190,207 +206,79 @@ export default function HomePage({ setActivePage, onOpenCaseStudy, onSelectCateg
         </div>
       </section>
 
-      {/* 4. Creative Services / What I Do Section */}
+      {/* 4. Short About & Verified Skills Summary (~65 words) */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-white rounded-3xl border border-[#142B4A]/10 p-5 sm:p-8 lg:p-12 space-y-8 sm:space-y-12 shadow-xl relative overflow-hidden text-left">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-bronze/5 rounded-full blur-3xl pointer-events-none" />
-
-          {/* Section Header */}
-          <div className="space-y-3 max-w-3xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-canvas-muted border border-bronze/30 text-xs font-mono font-bold text-bronze">
-              <Sparkles className="w-3.5 h-3.5" />
-              <span>Creative Capabilities & Offerings</span>
-            </div>
-            <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold text-[#142B4A] tracking-tight">
-              Comprehensive Design & Motion Services
-            </h2>
-            <p className="text-xs sm:text-sm lg:text-base text-[#486581] leading-relaxed font-medium">
-              Tailored creative solutions designed to help creative agencies, product brands, and digital marketers capture attention and accelerate conversion.
-            </p>
-          </div>
-
-          {/* Services Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
-            {servicesData.map((service) => (
-              <div
-                key={service.id}
-                className="p-5 sm:p-7 rounded-2xl bg-[#FAF7F2] border border-[#142B4A]/10 hover:border-bronze hover:bg-white transition-luxury space-y-4 sm:space-y-5 flex flex-col justify-between group shadow-sm hover:shadow-md"
-              >
-                <div className="space-y-3.5">
-                  <div className="flex items-center justify-between">
-                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-white border border-[#142B4A]/10 flex items-center justify-center group-hover:border-bronze transition-luxury shadow-sm">
-                      {getServiceIcon(service.iconName)}
-                    </div>
-                    <span className="text-[11px] sm:text-xs font-mono text-bronze uppercase tracking-wider font-bold">
-                      Service Area
-                    </span>
-                  </div>
-
-                  <div>
-                    <h3 className="font-display text-lg sm:text-xl font-bold text-[#142B4A] group-hover:text-bronze transition-luxury">
-                      {service.title}
-                    </h3>
-                    <p className="text-xs font-mono text-bronze-dark font-semibold mt-0.5">
-                      {service.subtitle}
-                    </p>
-                  </div>
-
-                  <p className="text-xs sm:text-sm text-[#486581] leading-relaxed">
-                    {service.description}
-                  </p>
-                </div>
-
-                {/* Deliverables checklist */}
-                <div className="pt-3.5 sm:pt-4 border-t border-[#142B4A]/10 space-y-2">
-                  <span className="text-[10px] sm:text-[11px] font-mono text-[#627D98] uppercase tracking-wider font-bold block">
-                    Core Deliverables:
+        <div className="bg-white rounded-3xl border border-[#142B4A]/10 p-6 sm:p-10 lg:p-12 shadow-sm text-left">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <div className="lg:col-span-8 space-y-4">
+              <span className="px-3 py-1 rounded-full text-xs font-mono font-bold bg-[#FAF7F2] text-bronze border border-[#142B4A]/10 inline-block">
+                About Nira
+              </span>
+              <h3 className="font-display text-2xl sm:text-3xl font-bold text-[#142B4A]">
+                Computer Science Precision Meets Editorial Motion Aesthetics
+              </h3>
+              <p className="text-sm sm:text-base text-[#486581] font-sans leading-relaxed">
+                I am a multidisciplinary designer and Computer Science undergraduate at Varendra University in Bangladesh. Currently directing commercial motion design, luxury advertising campaigns, and UI/UX solutions for worldwide export brands including Royal Hair Wigs and Roylux. I combine computational engineering rigor with high-impact visual storytelling.
+              </p>
+              <div className="pt-2 flex flex-wrap gap-2 text-xs font-mono text-[#142B4A]">
+                {['After Effects', 'Premiere Pro', 'Figma', 'React', 'TypeScript', 'Flutter', 'Tailwind CSS'].map((s, i) => (
+                  <span key={i} className="px-3 py-1 rounded-lg bg-[#FAF7F2] border border-[#142B4A]/10 font-bold">
+                    {s}
                   </span>
-                  <div className="grid grid-cols-1 gap-1.5">
-                    {service.deliverables.map((deliv, idx) => (
-                      <div key={idx} className="flex items-center gap-2 text-xs text-[#334E68] font-medium">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 flex-shrink-0" />
-                        <span>{deliv}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Bottom Action */}
-          <div className="pt-4 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-[#142B4A]/10">
-            <span className="text-xs text-[#486581] font-semibold text-center sm:text-left">
-              Have a custom project or unique deliverable in mind?
-            </span>
-            <button
-              onClick={handleWhatsAppChat}
-              className="w-full sm:w-auto px-5 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-display font-bold text-xs shadow-md flex items-center justify-center gap-2 transition-luxury min-h-[44px]"
-            >
-              <MessageSquare className="w-4 h-4" />
-              <span>Discuss on WhatsApp (01312727685)</span>
-            </button>
-          </div>
-        </div>
-      </section>
-
-      {/* 5. "About Me" Spotlight Section on Homepage */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-white rounded-3xl border border-[#142B4A]/10 p-5 sm:p-8 lg:p-12 shadow-xl relative overflow-hidden">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
-            {/* Portrait side */}
-            <div className="lg:col-span-4 flex justify-center">
-              <div className="relative w-full max-w-[240px] sm:max-w-xs aspect-[4/5] rounded-2xl p-2 bg-[#FAF7F2] border border-[#142B4A]/10 shadow-lg">
-                <img
-                  src={portraitImg}
-                  alt="Mst. Opisultana Nira"
-                  className="w-full h-full object-cover object-top rounded-xl"
-                  loading="lazy"
-                />
-                <div className="absolute -bottom-3 left-3 right-3 sm:left-4 sm:right-4 p-2.5 rounded-xl bg-[#142B4A] border border-bronze/40 text-center text-white shadow-md">
-                  <span className="text-xs font-display font-bold text-white block">
-                    Mst. Opisultana Nira
-                  </span>
-                  <span className="text-[10px] font-mono text-bronze-light">
-                    CSE Undergraduate & Creative Designer
-                  </span>
-                </div>
+                ))}
               </div>
             </div>
 
-            {/* Bio & Details side */}
-            <div className="lg:col-span-8 space-y-5 sm:space-y-6 text-left">
-              <div className="space-y-2">
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-canvas-muted border border-bronze/30 text-xs font-mono font-bold text-bronze">
-                  <Compass className="w-3.5 h-3.5" />
-                  <span>About The Designer</span>
-                </div>
-                <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold text-[#142B4A] tracking-tight">
-                  Creative Vision Driven by Engineering Precision
-                </h2>
+            <div className="lg:col-span-4 flex flex-col gap-3 justify-center">
+              <div className="p-4 rounded-2xl bg-[#FAF7F2] border border-[#142B4A]/10 space-y-1">
+                <span className="text-[10px] font-mono font-bold text-bronze uppercase">Current Role</span>
+                <span className="text-sm font-bold text-[#142B4A] block">Motion Graphics & UI Designer</span>
+                <span className="text-xs text-[#627D98] block">Royal Hair Wigs & Roylux</span>
               </div>
-
-              <div className="space-y-3 text-xs sm:text-sm text-[#334E68] leading-relaxed font-medium">
-                <p>
-                  I am a <strong className="text-[#142B4A] font-bold">Motion Graphics Designer & UI/UX Designer</strong> currently pursuing a <strong className="text-[#142B4A] font-bold">B.Sc. in Computer Science & Engineering</strong> at Varendra University.
-                </p>
-                <p>
-                  Since November 2023, I have been designing commercial video advertisements, luxury product showcases, static promotional posters, and e-commerce UI interfaces for <strong className="text-[#142B4A] font-bold">Royal Hair Wigs & Roylux</strong> (worldwide export brands), serving international clients across North America, Europe, and global markets.
-                </p>
-              </div>
-
-              {/* Quick Info Matrix */}
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3 pt-1">
-                <div className="p-3 rounded-xl bg-[#FAF7F2] border border-[#142B4A]/10">
-                  <span className="text-[10px] font-mono text-bronze uppercase font-bold block">Experience</span>
-                  <span className="text-xs font-bold text-[#142B4A] font-display block mt-0.5">Nov 2023 – Present</span>
-                </div>
-                <div className="p-3 rounded-xl bg-[#FAF7F2] border border-[#142B4A]/10">
-                  <span className="text-[10px] font-mono text-bronze uppercase font-bold block">Education</span>
-                  <span className="text-xs font-bold text-[#142B4A] font-display block mt-0.5">B.Sc. in CSE (VU)</span>
-                </div>
-                <div className="p-3 rounded-xl bg-[#FAF7F2] border border-[#142B4A]/10">
-                  <span className="text-[10px] font-mono text-bronze uppercase font-bold block">WhatsApp</span>
-                  <span className="text-xs font-bold text-emerald-600 font-display block mt-0.5">01312727685</span>
-                </div>
-                <div className="p-3 rounded-xl bg-[#FAF7F2] border border-[#142B4A]/10">
-                  <span className="text-[10px] font-mono text-bronze uppercase font-bold block">Behance</span>
-                  <span className="text-xs font-bold text-blue-600 font-display block mt-0.5">opinira</span>
-                </div>
-              </div>
-
-              {/* Action Buttons */}
-              <div className="flex flex-wrap items-center gap-3 pt-1">
-                <button
-                  onClick={() => handleNavClick('about')}
-                  className="w-full sm:w-auto px-5 py-3 rounded-xl bg-bronze text-white font-display font-bold text-xs shadow-md hover:bg-bronze-dark transition-luxury min-h-[44px]"
-                >
-                  Read Full About Story ➔
-                </button>
-                <button
-                  onClick={() => handleNavClick('experience')}
-                  className="w-full sm:w-auto px-5 py-3 rounded-xl bg-white border border-[#142B4A]/15 hover:border-bronze text-[#142B4A] font-sans font-semibold text-xs transition-luxury shadow-sm min-h-[44px]"
-                >
-                  View Experience Timeline
-                </button>
+              <div className="p-4 rounded-2xl bg-[#FAF7F2] border border-[#142B4A]/10 space-y-1">
+                <span className="text-[10px] font-mono font-bold text-bronze uppercase">Education</span>
+                <span className="text-sm font-bold text-[#142B4A] block">B.Sc. in CSE (Ongoing)</span>
+                <span className="text-xs text-[#627D98] block">Varendra University, Rajshahi</span>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 6. Direct Contact Banner */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-[#142B4A] text-white rounded-3xl border border-bronze/40 p-6 sm:p-8 lg:p-12 shadow-2xl relative overflow-hidden">
+      {/* 5. Contact Section */}
+      <section id="contact-section" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="bg-[#142B4A] text-white rounded-3xl border border-bronze/40 p-6 sm:p-10 lg:p-12 shadow-2xl relative overflow-hidden text-left">
           <div className="absolute top-0 right-0 w-96 h-96 bg-bronze/10 rounded-full blur-3xl pointer-events-none" />
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-center relative z-10">
-            <div className="lg:col-span-8 space-y-3 text-left">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
+            <div className="lg:col-span-8 space-y-3">
               <span className="px-3 py-1 rounded-full text-xs font-mono font-bold bg-[#0E1E34] text-bronze-light border border-bronze/30 inline-block">
-                Start a Conversation
+                Start a Collaboration
               </span>
-              <h3 className="font-display text-xl sm:text-2xl lg:text-3xl font-bold text-white tracking-tight">
-                Let’s Collaborate on Your Next Brand Campaign.
+              <h3 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold text-white tracking-tight">
+                Let’s Create High-Converting Visuals & Digital Products.
               </h3>
-              <p className="text-xs sm:text-sm text-ivory/80 leading-relaxed max-w-2xl font-normal">
-                Available for commercial video advertising, brand motion reels, luxury promotional posters, and UI/UX design. Reach out directly on WhatsApp or Email for fast turnaround.
+              <p className="text-xs sm:text-sm text-ivory/80 leading-relaxed max-w-xl">
+                Available for commercial video advertising, brand motion design, e-commerce UI/UX prototypes, and web applications. Reach out directly for project inquiries.
               </p>
             </div>
 
-            <div className="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col gap-3 justify-end w-full">
+            <div className="lg:col-span-4 flex flex-col gap-3 justify-end">
               <button
                 onClick={handleWhatsAppChat}
-                className="w-full px-5 py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-display font-bold text-xs shadow-lg shadow-emerald-950/30 transition-luxury text-center flex items-center justify-center gap-2 min-h-[44px]"
+                className="w-full px-5 py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-display font-bold text-xs shadow-lg transition-all text-center flex items-center justify-center gap-2 min-h-[46px]"
               >
                 <MessageSquare className="w-4 h-4" />
                 <span>WhatsApp: 01312727685</span>
               </button>
-              <button
-                onClick={() => handleNavClick('contact')}
-                className="w-full px-5 py-3.5 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 text-white font-sans font-semibold text-xs transition-luxury text-center backdrop-blur-sm min-h-[44px]"
+
+              <a
+                href={`mailto:${professionalProfile.email}`}
+                className="w-full px-5 py-3.5 rounded-xl bg-white hover:bg-[#FAF7F2] text-[#142B4A] font-display font-bold text-xs shadow-md transition-all text-center flex items-center justify-center gap-2 min-h-[46px]"
               >
-                Open Contact Form
-              </button>
+                <Mail className="w-4 h-4 text-bronze" />
+                <span>{professionalProfile.email}</span>
+              </a>
             </div>
           </div>
         </div>

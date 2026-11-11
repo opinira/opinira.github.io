@@ -10,10 +10,10 @@ export default function CategoryBanner({ onSelectCategory }) {
         <div>
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white border border-[#142B4A]/10 text-xs font-mono font-bold text-bronze uppercase tracking-wider mb-2">
             <Sparkles className="w-3.5 h-3.5" />
-            <span>Creative Disciplines</span>
+            <span>Portfolio</span>
           </div>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-display font-bold text-[#142B4A] tracking-tight">
-            Explore My Work
+            Selected Work
           </h2>
           <p className="text-sm sm:text-base text-[#486581] max-w-2xl font-sans mt-1">
             Browse creative commercial projects across four dedicated disciplines.

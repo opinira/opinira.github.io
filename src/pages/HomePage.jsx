@@ -72,7 +72,7 @@ export default function HomePage({ setActivePage, onOpenCaseStudy, onSelectCateg
 
               {/* Concise Introduction: Exactly one factual sentence */}
               <p className="text-sm sm:text-base lg:text-lg text-[#334E68] leading-relaxed max-w-2xl font-sans font-medium">
-                A multidisciplinary creative combining Computer Science precision with commercial motion graphics, luxury visual design, and modern web & mobile engineering.
+                I design intuitive interfaces and build responsive web experiences.
               </p>
 
               {/* Two Clear Primary Actions + WhatsApp */}
@@ -81,7 +81,7 @@ export default function HomePage({ setActivePage, onOpenCaseStudy, onSelectCateg
                   href="#work-categories"
                   className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl bg-bronze hover:bg-bronze-dark text-white font-display font-bold text-sm shadow-xl shadow-bronze/25 transition-all duration-200 group min-h-[46px]"
                 >
-                  <span>Explore My Work</span>
+                  <span>View My Work</span>
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </a>
 
@@ -134,7 +134,7 @@ export default function HomePage({ setActivePage, onOpenCaseStudy, onSelectCateg
                   {/* Corner Brand Pill */}
                   <div className="absolute bottom-4 left-4 right-4 bg-[#142B4A]/90 backdrop-blur-md px-3.5 py-2 rounded-xl text-white flex items-center justify-between text-xs">
                     <span className="font-display font-bold">Nira</span>
-                    <span className="text-[11px] font-mono text-bronze-light">Creative Designer & Engineer</span>
+                    <span className="text-[11px] font-mono text-bronze-light font-medium">Front-End Developer & UI/UX Designer</span>
                   </div>
                 </div>
               </div>
@@ -206,33 +206,37 @@ export default function HomePage({ setActivePage, onOpenCaseStudy, onSelectCateg
         </div>
       </section>
 
-      {/* 4. Short About & Verified Skills Summary (~65 words) */}
+      {/* 4. Short About & Verified Skills Summary */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="bg-white rounded-3xl border border-[#142B4A]/10 p-6 sm:p-10 lg:p-12 shadow-sm text-left">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             <div className="lg:col-span-8 space-y-4">
               <span className="px-3 py-1 rounded-full text-xs font-mono font-bold bg-[#FAF7F2] text-bronze border border-[#142B4A]/10 inline-block">
-                About Nira
+                About Me
               </span>
               <h3 className="font-display text-2xl sm:text-3xl font-bold text-[#142B4A]">
-                Computer Science Precision Meets Editorial Motion Aesthetics
+                About Me
               </h3>
               <p className="text-sm sm:text-base text-[#486581] font-sans leading-relaxed">
-                I am a multidisciplinary designer and Computer Science undergraduate at Varendra University in Bangladesh. Currently directing commercial motion design, luxury advertising campaigns, and UI/UX solutions for worldwide export brands including Royal Hair Wigs and Roylux. I combine computational engineering rigor with high-impact visual storytelling.
+                I’m Nira, a front-end developer and UI/UX designer. I create clear interfaces and responsive websites, combining thoughtful design with practical development to make digital experiences easy to use.
               </p>
-              <div className="pt-2 flex flex-wrap gap-2 text-xs font-mono text-[#142B4A]">
-                {['After Effects', 'Premiere Pro', 'Figma', 'React', 'TypeScript', 'Flutter', 'Tailwind CSS'].map((s, i) => (
-                  <span key={i} className="px-3 py-1 rounded-lg bg-[#FAF7F2] border border-[#142B4A]/10 font-bold">
-                    {s}
-                  </span>
-                ))}
+              
+              <div className="pt-2 space-y-2">
+                <span className="text-xs font-mono font-bold text-[#142B4A] uppercase tracking-wider block">Skills</span>
+                <div className="flex flex-wrap gap-2 text-xs font-mono text-[#142B4A]">
+                  {['React', 'TypeScript', 'Tailwind CSS', 'Figma', 'HTML/CSS', 'After Effects', 'Flutter'].map((s, i) => (
+                    <span key={i} className="px-3 py-1 rounded-lg bg-[#FAF7F2] border border-[#142B4A]/10 font-bold">
+                      {s}
+                    </span>
+                  ))}
+                </div>
               </div>
             </div>
 
             <div className="lg:col-span-4 flex flex-col gap-3 justify-center">
               <div className="p-4 rounded-2xl bg-[#FAF7F2] border border-[#142B4A]/10 space-y-1">
                 <span className="text-[10px] font-mono font-bold text-bronze uppercase">Current Role</span>
-                <span className="text-sm font-bold text-[#142B4A] block">Motion Graphics & UI Designer</span>
+                <span className="text-sm font-bold text-[#142B4A] block">UI/UX Designer & Developer</span>
                 <span className="text-xs text-[#627D98] block">Royal Hair Wigs & Roylux</span>
               </div>
               <div className="p-4 rounded-2xl bg-[#FAF7F2] border border-[#142B4A]/10 space-y-1">
@@ -253,13 +257,13 @@ export default function HomePage({ setActivePage, onOpenCaseStudy, onSelectCateg
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
             <div className="lg:col-span-8 space-y-3">
               <span className="px-3 py-1 rounded-full text-xs font-mono font-bold bg-[#0E1E34] text-bronze-light border border-bronze/30 inline-block">
-                Start a Collaboration
+                Get in Touch
               </span>
               <h3 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold text-white tracking-tight">
-                Let’s Create High-Converting Visuals & Digital Products.
+                Let’s Connect
               </h3>
               <p className="text-xs sm:text-sm text-ivory/80 leading-relaxed max-w-xl">
-                Available for commercial video advertising, brand motion design, e-commerce UI/UX prototypes, and web applications. Reach out directly for project inquiries.
+                Let’s collaborate on your next digital product or web experience.
               </p>
             </div>
 

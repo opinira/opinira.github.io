@@ -4,7 +4,7 @@ export const educationData = [
     institution: 'Varendra University',
     status: 'Undergraduate / Ongoing',
     type: 'Higher Education',
-    description: 'Combining computational precision, software fundamentals, and algorithmic logic with high-end commercial digital motion design and interactive media production.'
+    description: 'Focusing on front-end web engineering, UI/UX systems, computational design, and interactive media.'
   },
   {
     degree: 'Higher Secondary Certificate (HSC)',
@@ -24,71 +24,58 @@ export const educationData = [
 
 export const professionalProfile = {
   fullName: 'Mst. Opisultana Nira',
-  title: 'Motion Graphics Designer | UI/UX Designer | CSE Undergraduate',
-  heroHeadline: 'Designing Visual Stories That Move Brands Forward.',
-  heroSubheadline: 'A Motion Graphics and UI/UX Designer creating commercial visuals, promotional campaigns, and thoughtful digital experiences for modern international brands.',
-  aboutSummary: 'A multidisciplinary designer based in Bangladesh working remotely with worldwide export brands. Blending the precision of Computer Science with high-end editorial motion design, luxury advertising aesthetics, and AI-augmented creative pipelines.',
+  title: 'Front-End Developer & UI/UX Designer',
+  heroHeadline: 'Mst. Opisultana Nira',
+  heroSubheadline: 'I design intuitive interfaces and build responsive web experiences.',
+  aboutSummary: "I’m Nira, a front-end developer and UI/UX designer. I create clear interfaces and responsive websites, combining thoughtful design with practical development to make digital experiences easy to use.",
   email: 'opisultana.nira@gmail.com',
   whatsappNumber: '01312727685',
   whatsappUrl: 'https://wa.me/8801312727685',
   behanceUrl: 'https://www.behance.net/opinira',
+  githubUrl: 'https://github.com/opinira',
   driveProjectsUrl: 'https://drive.google.com/drive/folders/1TGqEy1MuzgMSlE_NvG_UMAF7qB0RucNN?usp=sharing',
-  currentRole: 'Motion Graphics Designer & UI/UX Designer at Royal Hair Wigs & Roylux',
-  currentLocation: 'Rajshahi, Bangladesh (Available for Worldwide Remote Contracts)',
+  currentRole: 'Front-End Developer & UI/UX Designer at Royal Hair Wigs & Roylux',
+  currentLocation: 'Rajshahi, Bangladesh (Available for Worldwide Remote Work)',
   languages: ['English (Professional Working Proficiency)', 'Bengali (Native)']
 };
 
 export const servicesData = [
   {
-    id: 'commercial-motion',
-    title: 'Commercial Video Advertising & Motion Design',
-    subtitle: 'High-Impact Video Ads & Promotional Reels',
-    description: 'Producing cinematic commercial video ads, luxury product showcases, promotional campaigns, and kinetic typography tailored for high-converting social media platforms and global brand marketing.',
-    iconName: 'Film',
+    id: 'frontend-dev',
+    title: 'Front-End Development',
+    subtitle: 'Responsive Web Engineering',
+    description: 'Building clean, responsive web applications in React, TypeScript, Astro, and Tailwind CSS with accessible code and fluid interactions.',
+    iconName: 'Layout',
     deliverables: [
-      'Commercial Video Advertisements (1080p / 4K)',
-      'Product Motion Reels & Showcase Clips',
-      'Kinetic Typography & Title Animations',
-      'Multi-Format Social Video Assets (1:1, 9:16, 16:9)'
-    ]
-  },
-  {
-    id: 'poster-design',
-    title: 'Static Poster Design & Campaign Artwork',
-    subtitle: 'Editorial Posters & Digital Banners',
-    description: 'Crafting luxury commercial posters, promotional advertising artwork, seasonal campaign visuals, and high-contrast e-commerce banners that captivate audiences and elevate brand authority.',
-    iconName: 'Image',
-    deliverables: [
-      'Commercial Advertising Posters (Print & Digital)',
-      'Product Launch & Promotional Campaign Visuals',
-      'E-Commerce Hero & Category Banners',
-      'High-Resolution Print-Ready Artwork (300 DPI)'
+      'Responsive React & TypeScript Web Apps',
+      'Modern Tailwind Component Systems',
+      'Interactive Micro-Animations & State Flow',
+      'Production Web Performance & Accessibility'
     ]
   },
   {
     id: 'uiux-design',
-    title: 'UI/UX Design & Digital Prototyping',
-    subtitle: 'User-Centric Web & Mobile Interfaces',
-    description: 'Designing intuitive wireframes, high-fidelity prototypes, e-commerce product layouts, and design systems in Figma that merge aesthetic elegance with high conversion rates.',
+    title: 'UI/UX Design & Prototyping',
+    subtitle: 'User-Centered Interface Architecture',
+    description: 'Designing intuitive wireframes, clickable high-fidelity Figma prototypes, and scalable design systems that clarify user journeys.',
     iconName: 'Layout',
     deliverables: [
-      'Interactive UI/UX Prototypes & Wireframes',
-      'E-Commerce Landing Page Designs',
-      'Mobile-First Responsive Interface Concepts',
-      'Design Systems & Visual Component Libraries'
+      'High-Fidelity Interactive Figma Prototypes',
+      'Design Systems & Component Libraries',
+      'User Journey & Wireframe Architecture',
+      'E-Commerce & Mobile-First Interface Layouts'
     ]
   },
   {
-    id: 'ai-creative',
-    title: 'AI-Augmented Creative Production',
-    subtitle: 'Accelerated Concepting & Asset Synthesis',
-    description: 'Integrating state-of-the-art generative AI systems (Google Flow, Gemini, ChatGPT, Claude, Higgsfield, Nano Banana) into video concepting, storyboarding, and texture synthesis for rapid, high-quality turnarounds.',
-    iconName: 'Sparkles',
+    id: 'commercial-motion',
+    title: 'Commercial Motion Design',
+    subtitle: 'Video Advertising & Reels',
+    description: 'Producing commercial video advertisements, luxury product showcases, and kinetic typography for high-converting social campaigns.',
+    iconName: 'Film',
     deliverables: [
-      'Rapid Storyboard Concept Generation',
-      'AI-Enhanced Environmental Textures & Backgrounds',
-      'Multi-Variant Creative Hook Development',
-      'Streamlined Production Turnarounds'
+      'Commercial Video Advertisements (1080p / 4K)',
+      'Product Motion Reels & Showcase Clips',
+      'Kinetic Typography & Title Sequences'
     ]
   }
 ];

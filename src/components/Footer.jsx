@@ -1,5 +1,6 @@
 import React from 'react';
 import { ArrowUpRight, MessageSquare, FolderDown, Film, Image as ImageIcon } from 'lucide-react';
+import portraitImg from '../assets/images/portrait.png';
 import { BEHANCE_PROFILE_URL, DRIVE_VIDEO_URL, DRIVE_STATIC_URL } from '../data/portfolioData';
 
 export default function Footer({ setActivePage }) {
@@ -29,18 +30,24 @@ export default function Footer({ setActivePage }) {
           {/* Left Column: Brand & Title */}
           <div className="md:col-span-5 space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-9 h-9 rounded-lg bg-[#0E1E34] border border-bronze/50 flex items-center justify-center font-display font-bold text-white text-base shadow-sm">
-                <span className="text-bronze-light">N</span>
+              <div className="w-9 h-9 rounded-full overflow-hidden border border-bronze/50 shadow-sm flex-shrink-0 bg-white">
+                <img
+                  src={portraitImg}
+                  alt="Nira"
+                  width={36}
+                  height={36}
+                  className="w-full h-full object-cover object-top"
+                />
               </div>
               <h3 className="font-display text-lg font-bold text-white tracking-tight">
                 Mst. Opisultana Nira
               </h3>
             </div>
             <p className="text-xs uppercase tracking-widest text-bronze-light font-bold">
-              Motion Graphics Designer & UI/UX Designer
+              Front-End Developer & UI/UX Designer
             </p>
             <p className="text-sm text-ivory/80 leading-relaxed max-w-sm font-normal">
-              Creating high-impact commercial visuals, promotional campaigns, and thoughtful digital experiences for international export brands and creative marketing teams.
+              Front-End Developer & UI/UX Designer creating intuitive interfaces, responsive websites, and practical digital experiences.
             </p>
             <div className="pt-2">
               <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#0E1E34] border border-bronze/30 text-xs text-ivory font-medium">
@@ -170,7 +177,7 @@ export default function Footer({ setActivePage }) {
           <div className="flex flex-wrap items-center justify-center gap-2 text-[11px] text-ivory/60">
             <span>Direct WhatsApp: 01312727685</span>
             <span>•</span>
-            <span className="text-bronze-light">Motion Graphics & UI/UX</span>
+            <span className="text-bronze-light">Front-End Developer & UI/UX Designer</span>
           </div>
         </div>
       </div>

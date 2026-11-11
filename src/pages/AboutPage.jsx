@@ -44,13 +44,13 @@ export default function AboutPage({ setActivePage }) {
 
           <div className="space-y-4 text-[#334E68] text-sm sm:text-base leading-relaxed font-medium">
             <p>
-              I am a <strong className="text-[#142B4A] font-bold">Motion Graphics Designer and UI/UX Designer</strong> currently pursuing my <strong className="text-[#142B4A] font-bold">B.Sc. in Computer Science & Engineering</strong> at Varendra University.
+              I am a <strong className="text-[#142B4A] font-bold">Front-End Developer & UI/UX Designer</strong> currently pursuing my <strong className="text-[#142B4A] font-bold">B.Sc. in Computer Science & Engineering</strong> at Varendra University.
             </p>
             <p>
-              Since November 2023, I have been working with the marketing team at <strong className="text-[#142B4A] font-bold">Royal Hair Wigs & Roylux</strong> (worldwide export brands), designing commercial video advertisements, luxury product showcases, promotional posters, and e-commerce digital experiences for international clients across North America, Europe, and global regions.
+              I create clear interfaces and responsive websites, combining thoughtful design with practical development to make digital experiences easy to use. I also develop digital brand solutions and commercial designs for worldwide export brands including <strong className="text-[#142B4A] font-bold">Royal Hair Wigs & Roylux</strong>.
             </p>
             <p>
-              My background in Computer Science allows me to approach creative design with systematic rigor—understanding responsive web systems, design tokens, visual hierarchy, and leveraging state-of-the-art generative AI workflows to augment commercial video production.
+              My background in Computer Science allows me to approach creative design with systematic rigor—understanding responsive web systems, design tokens, visual hierarchy, and modern front-end architectures.
             </p>
           </div>
 
@@ -58,7 +58,7 @@ export default function AboutPage({ setActivePage }) {
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
             <div className="p-3.5 rounded-xl bg-white border border-[#142B4A]/10 shadow-sm">
               <span className="text-[10px] font-mono uppercase text-bronze font-bold block">Focus</span>
-              <span className="text-xs font-bold text-[#142B4A] font-display block mt-0.5">Motion & Video Ads</span>
+              <span className="text-xs font-bold text-[#142B4A] font-display block mt-0.5">Front-End & UI/UX</span>
             </div>
             <div className="p-3.5 rounded-xl bg-white border border-[#142B4A]/10 shadow-sm">
               <span className="text-[10px] font-mono uppercase text-bronze font-bold block">Experience</span>

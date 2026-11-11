@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react';
 
 const TAGLINE_PHRASES = [
-  'Motion Design',
-  'UI/UX Design',
-  'Development & Web Apps',
-  'App Development',
+  'Front-End Developer',
+  'UI/UX Designer',
 ];
 
 export default function TypingTagline() {
@@ -14,7 +12,6 @@ export default function TypingTagline() {
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
 
   useEffect(() => {
-    // Check user's reduced-motion preference
     const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
     setPrefersReducedMotion(mediaQuery.matches);
 
@@ -25,7 +22,7 @@ export default function TypingTagline() {
 
   useEffect(() => {
     if (prefersReducedMotion) {
-      setDisplayedText(TAGLINE_PHRASES[0]);
+      setDisplayedText('Front-End Developer & UI/UX Designer');
       return;
     }
 
@@ -33,25 +30,21 @@ export default function TypingTagline() {
     let timer;
 
     if (!isDeleting) {
-      // Typing forward
       if (displayedText.length < currentPhrase.length) {
         timer = setTimeout(() => {
           setDisplayedText(currentPhrase.slice(0, displayedText.length + 1));
-        }, 75);
+        }, 80);
       } else {
-        // Finished typing phrase, pause before deleting
         timer = setTimeout(() => {
           setIsDeleting(true);
         }, 2200);
       }
     } else {
-      // Deleting backward
       if (displayedText.length > 0) {
         timer = setTimeout(() => {
           setDisplayedText(currentPhrase.slice(0, displayedText.length - 1));
-        }, 40);
+        }, 45);
       } else {
-        // Finished deleting, move to next phrase
         setIsDeleting(false);
         setPhraseIndex((prev) => (prev + 1) % TAGLINE_PHRASES.length);
       }
@@ -63,18 +56,18 @@ export default function TypingTagline() {
   if (prefersReducedMotion) {
     return (
       <div className="min-h-[2.5rem] flex items-center">
-        <span className="text-xl sm:text-2xl lg:text-3xl font-display font-semibold text-bronze">
-          Motion Design, UI/UX & Software Engineering
-        </span>
+        <h2 className="text-xl sm:text-2xl lg:text-3xl font-display font-semibold text-bronze">
+          Front-End Developer & UI/UX Designer
+        </h2>
       </div>
     );
   }
 
   return (
     <div className="min-h-[2.5rem] flex items-center" aria-live="polite">
-      {/* Screen reader static announcement */}
+      {/* Screen reader static accessible announcement */}
       <span className="sr-only">
-        Specializing in Motion Design, UI/UX Design, Development & Web Apps, and App Development.
+        Front-End Developer & UI/UX Designer
       </span>
 
       {/* Visual animated typing text */}
